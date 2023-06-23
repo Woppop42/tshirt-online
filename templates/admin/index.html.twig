@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BACKOFFICE{% endblock %}
+
+{% block body %}
+<div class="container text-center mt-3">
+
+<a href="{{path('admin_user')}}" class="btn btn-primary">Utilisateurs</a>
+<a href="{{path('admin_commandes')}}" class="btn btn-primary">Commandes</a>
+<a href="{{path('admin_produit')}}" class="btn btn-primary">Produit</a>
+</div>
+
+
+
+{% endblock %}

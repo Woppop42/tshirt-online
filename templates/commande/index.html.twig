@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommandeController!{% endblock %}
+
+{% block body %}
+<div class="container col-6">
+{{form_start(formCommande)}}
+<button class="btn btn-success" type="submit">Commander</button>
+{{form_end(formCommande)}}
+
+
+
+</div>
+{% endblock %}

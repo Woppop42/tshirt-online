@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container text-center">
+		{% for message in app.flashes('successModifMembre')%}
+		<div class="div container text-center">
+			<div class="div alert alert-success text-center">{{message}}</div>
+        </div>
+		{% endfor %}
+</div>
+<table class="table table-dark">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Couleur</th>
+        <th>Taille</th>
+        <th>Collection</th>
+        <th>Photo</th>
+        <th>Prix</th>
+        <th>Stock</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr>
+    {% for produit in produits %}
+        <tr>
+            <td>{{produit.id}}</td>
+            <td>{{produit.titre}}</td>
+            <td>{{produit.description}}</td>
+            <td>{{produit.couleur}}</td>
+            <td>{{produit.taille}}</td>
+            <td>{{produit.collection}}</td>
+            <td><img src="{{asset('images/' ~ produit.photo)}}" alt=""></td>
+            <td>{{ produit.prix }}</td>
+            <td>{{ produit.stock }}</td>
+            <td>
+            <a href="{{ path('produit_modif', {id: produit.id})}}" class="btn btn-warning">Modifier</a>
+            <a href="{{ path('produit_delete', {id: produit.id})}}" class="btn btn-danger">Supprimer</a> 
+            </td>
+        </tr>
+    {% endfor %}
+    </tr>
+</tbody>
+</table>
+<a href="{{path('produit_new')}}" class="btn btn-success mt-3">Créer un nouveau produit</a>
+{% endblock %}

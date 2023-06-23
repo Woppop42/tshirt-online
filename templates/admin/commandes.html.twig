@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container text-center">
+		{% for message in app.flashes('successModifMembre')%}
+		<div class="div container text-center">
+			<div class="div alert alert-success text-center">{{message}}</div>
+        </div>
+		{% endfor %}
+</div>
+<table class="table table-dark">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Quantité</th>
+        <th>ID Article</th>
+        <th>Etat</th>
+        <th>Prix</th>
+        <th>Utilisateur</th>
+        <th>Date d'enregistrement</th>
+
+    </tr>
+</thead>
+
+<tbody>
+    <tr>
+    {% for commande in commandes %}
+        <tr>
+            <td>{{commande.id}}</td>
+            <td>{{commande.quantite}}</td>
+            <td>{{commande.produitId}}</td>
+            <td>{{commande.etat}}</td>
+            <td>{{commande.prix}}</td>
+            <td>{{commande.user.pseudo}}</td>
+            <td>{{commande.dateEnregistrement|date("d/m/Y à H:i:s")}}</td>
+            <td>
+            <a href="{{ path('commandes_modif', {id: commande.id})}}" class="btn btn-warning">Modifier</a>
+            {# <a href="{{ path('user_delete', {id: commande.id})}}" class="btn btn-danger">Supprimer</a> #} 
+            </td>
+        </tr>
+    {% endfor %}
+    </tr>
+</tbody>
+</table>
+{% endblock %}

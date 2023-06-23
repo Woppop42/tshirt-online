@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Liste des produits</h1>
+<div class="container col-6">
+{% for item in produits %}
+<div class="card mt-3">
+  <h3 class="card-header">{{item.titre}}</h3>
+  <div class="card-body">
+    <img src="{{asset('images/' ~ item.photo)}}" alt="">
+  <div class="card-body">
+    <p class="card-text">{{item.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{item.taille}}</li>
+    <li class="list-group-item">{{item.collection}}</li>
+    <li class="list-group-item">{{item.stock}}</li>
+    <li class="list-group-item">{{item.prix}}€</li>
+  </ul>
+  <div class="card-body">
+    <a href="{{path('add_cart', {id: item.id})}}" class="card-link">Ajouter au Panier</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{item.dateEnregistrement|date("d/m/Y")}}
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
